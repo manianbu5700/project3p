@@ -1,0 +1,35 @@
+//Alert Handling
+import { test } from '@playwright/test'
+
+test('Alert Handling', async ({ page }) => {
+    await page.goto('https://demo.automationtesting.in/Alerts.html')
+
+    //Simple Alert
+    await page.on('dialog', async (dialog) => {  //Handling multiple Alerts at a same time
+        await dialog.accept()
+        console.log("Simple Alert:", dialog.message())
+    })
+
+    await page.locator('//button[@onclick="alertbox()"]').click()
+
+    //Confirmation Alert
+    await page.locator('(//a[@class="analystic"])[2]').click()
+
+    // await page.once('dialog', async (dialog) => {
+    //     await dialog.dismiss()
+    //     console.log('Confirmation Alert:', dialog.message())
+    // })
+
+    await page.locator('//button[@class="btn btn-primary"]').click()
+
+    //Prompt Alert
+    await page.locator('(//a[@class="analystic"])[3]').click()
+
+    // await page.once('dialog', async (dialog) => {
+    //     await dialog.accept('Hii Buddy')
+    //     console.log("Promp Alert:", dialog.message())
+    // })
+
+    await page.locator('//button[@class="btn btn-info"]').click()
+
+})
