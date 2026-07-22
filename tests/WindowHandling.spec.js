@@ -1,10 +1,6 @@
 import { test } from '@playwright/test'
 test('Windnow Handling', async ({ browser }) => {
-    const context = await browser.newContext({
-        recordVideo: {
-            dir: 'videos/'
-        }
-    })
+    const context = await browser.newContext()
     const page = await context.newPage()
 
     await page.goto('https://www.amazon.in/')
