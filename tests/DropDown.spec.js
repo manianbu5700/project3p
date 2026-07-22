@@ -6,7 +6,7 @@ test('Validate Dropdown', async ({ page }) => {
     const singleDrop = await page.locator('//select[@id="fruits"]')
     await singleDrop.selectOption({ label: "Mango" })
     const text = await singleDrop.locator('option:checked').textContent()
-    console.log("Selected fruite:", text)
+    console.log("Selected:", text)
 
     const multiDropdown = await page.locator('//select[@id="superheros"]')
     await multiDropdown.selectOption([{ index: 1 }, { value: "bp" }, { label: "Thor" }])
